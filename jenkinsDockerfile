@@ -1,0 +1,16 @@
+FROM docker.io/centos:latest
+MAINTAINER  kyun <kyun@t3q.com>
+
+RUN yum install -y java-1.8.0-openjdk-devel net-tools wget openssh-server git maven
+RUN ssh-keygen -A
+RUN echo "root:cloud3336" | chpasswd
+
+RUN adduser jenkins
+RUN echo "jenkins:clou3336" | chpasswd
+RUN su - jenkins -c "wget http://mirrors.jenkins-ci.org/war-stable/latest/jenkins.war -O /home/jenkins/jenkins.war"
+
+EXPOSE 22
+EXPOSE 5000
+
+CMD ["/usr/sbin/sshd","-D"]
+
