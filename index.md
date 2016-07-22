@@ -197,7 +197,7 @@ $ docker inspect jenkins
 
 SSH 로 jenkins 컨테이너에 접속한다.
 ```
->$ ssh xxx.xxx.xxx.xxx 
+$ ssh xxx.xxx.xxx.xxx 
 ```
 
 Nexus 서버의 접근권한을 설정하기 위해서 maven 설정파일인 `/usr/share/maven/conf/setting.xml`에 다음의 내용을 추가한다.
@@ -231,11 +231,13 @@ Nexus 서버의 접근권한을 설정하기 위해서 maven 설정파일인 `/u
 ### 시스템 설정 
 ```
  * JDK 
- `Name`: java1.8  
- `JAVA_HOME`: /usr/lib/jvm/java-1.8.0-openjdk
+ Name: java1.8  
+ JAVA_HOME: /usr/lib/jvm/java-1.8.0-openjdk
+
  * Git 
- `Path to Git executable`: /usr/bin/git
+ Path to Git executable: /usr/bin/git
+
  * Maven
- `Name`: maven  
- `MAVEN_HOME`: /user/share/maven 
+ Name: maven  
+ MAVEN_HOME: /user/share/maven 
 ```
