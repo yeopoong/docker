@@ -33,14 +33,20 @@ EXPOSE 8080
 CMD ["/usr/sbin/sshd","-D"]
 ```
 
->$ docker build -f tomcatDockerfile -t tomcat .
+```
+$ docker build -f tomcatDockerfile -t tomcat .
+```
 
 
 ### run
 
->$ docker run -itd --name tomcat -p 8080:8080 tomcat
+```
+$ docker run -itd --name tomcat -p 8080:8080 tomcat
+```
 
->$ docker exec tomcat su - tomcat -c "/home/tomcat/tomcat8/bin/startup.sh"
+```
+$ docker exec tomcat su - tomcat -c "/home/tomcat/tomcat8/bin/startup.sh"
+```
 
 
 SonarQube
@@ -68,14 +74,20 @@ EXPOSE 9000
 CMD ["/usr/sbin/sshd","-D"]
 ```
 
->$ docker build -f sonarDockerfile -t sonar .
+```
+$ docker build -f sonarDockerfile -t sonar .
+```
 
 
 ### run
 
->$ docker run -itd --name sonar -p 9000:9000 sonar
+```
+$ docker run -itd --name sonar -p 9000:9000 sonar
+```
 
->$ docker exec sonar su - sonar -c "./sonarqube-5.5/bin/linux-x86-64/sonar.sh start"
+```
+$ docker exec sonar su - sonar -c "./sonarqube-5.5/bin/linux-x86-64/sonar.sh start"
+```
 
 
 Nexus
@@ -107,14 +119,20 @@ EXPOSE 8081
 CMD ["/usr/sbin/sshd","-D"]
 ```
 
->$ docker build -f nexusDockerfile -t nexus .
+```
+$ docker build -f nexusDockerfile -t nexus .
+```
 
 
 ### run
 
->$ docker run -itd --name nexus -p 8081:8081 nexus
+```
+$ docker run -itd --name nexus -p 8081:8081 nexus
+```
 
->$ docker exec nexus su - nexus -c "./nexus/bin/nexus start"
+```
+$ docker exec nexus su - nexus -c "./nexus/bin/nexus start"
+```
 
 ### Nexus 서버 설정
 
@@ -153,24 +171,34 @@ EXPOSE 5000
 CMD ["/usr/sbin/sshd","-D"]
 ```
 
->$ docker build -f jenkinsDockerfile -t jenkins .
+```
+$ docker build -f jenkinsDockerfile -t jenkins .
+```
 
 
 ### run
 
->$ docker run -itd --name jenkins -p 5000:5000 --link tomcat:tomcat --link sonar:sonar --link nexus:nexus jenkins
+```
+$ docker run -itd --name jenkins -p 5000:5000 --link tomcat:tomcat --link sonar:sonar --link nexus:nexus jenkins
+```
 
->$ docker exec jenkins su - jenkins -c "java -jar jenkins.war --httpPort=5000"
+```
+$ docker exec jenkins su - jenkins -c "java -jar jenkins.war --httpPort=5000"
+```
 
 note: export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 
 ### Maven repository 설정
 
 다음 명령으로 jenkins 컨테이너 IP 주소를 확인한다.
->$ docker inspect jenkins
+```
+$ docker inspect jenkins
+```
 
 SSH 로 jenkins 컨테이너에 접속한다.
+```
 >$ ssh xxx.xxx.xxx.xxx 
+```
 
 Nexus 서버의 접근권한을 설정하기 위해서 maven 설정파일인 `/usr/share/maven/conf/setting.xml`에 다음의 내용을 추가한다.
 
@@ -201,11 +229,13 @@ Nexus 서버의 접근권한을 설정하기 위해서 maven 설정파일인 `/u
  * Deploy to container Plugin
 
 ### 시스템 설정 
+```
  * JDK 
- >`Name`: java1.8  
- >`JAVA_HOME`: /usr/lib/jvm/java-1.8.0-openjdk
+ `Name`: java1.8  
+ `JAVA_HOME`: /usr/lib/jvm/java-1.8.0-openjdk
  * Git 
- >`Path to Git executable`: /usr/bin/git
+ `Path to Git executable`: /usr/bin/git
  * Maven
- >`Name`: maven  
- >`MAVEN_HOME`: /user/share/maven 
+ `Name`: maven  
+ `MAVEN_HOME`: /user/share/maven 
+```
