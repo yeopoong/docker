@@ -48,6 +48,8 @@ $ docker run -itd --name tomcat -p 8080:8080 tomcat
 $ docker exec tomcat su - tomcat -c "/home/tomcat/tomcat8/bin/startup.sh"
 ```
 
+---
+
 
 SonarQube
 ---------
@@ -89,6 +91,7 @@ $ docker run -itd --name sonar -p 9000:9000 sonar
 $ docker exec sonar su - sonar -c "./sonarqube-5.5/bin/linux-x86-64/sonar.sh start"
 ```
 
+---
 
 Nexus
 -----
@@ -146,6 +149,7 @@ Private library repository 를 사용하기 위해서 Nexus를 설정한다.
 * 좌측 메뉴에서 Repositories를 클릭하고 우측목록화면에서 Central Repository를 선택한다.
 * Configuration 탭에서 Download Remote Indexes를 True로 변경한 후 저장한다.
 
+---
 
 Jenkins
 -------
